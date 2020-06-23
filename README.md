@@ -17,6 +17,9 @@ bash step2_build_opencv_compile_env.sh
 bash step3_login_to_docker.sh
 ```
 
+In the first step(__step1_build_toolchain.sh__), I create a toolchain environment with __arm-linux-gnueabihf__, which is applied in the board.
+In the second one(__step2_build_opencv_compile_env.sh__), I create another environment based on previous one. It provide musted package for building Open CV. 
+
 And then, you should enter the built docker-container. You can see the console show like following command line, which __/build__ is the default work directory in the beginning.
 
 ```shell
