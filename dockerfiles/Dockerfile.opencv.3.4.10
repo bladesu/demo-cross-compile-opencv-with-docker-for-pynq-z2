@@ -1,0 +1,16 @@
+FROM gnueabihf:7.3.1
+RUN apt-get update && \
+    apt-get install -y \
+      unzip cmake pkg-config sshfs
+RUN apt-get install -y \
+      tmux vim
+RUN apt-get install -y \
+      apt-utils pkg-config-arm-linux-gnueabihf
+
+ARG opencv_version=3.4.10
+
+RUN mkdir /build/files/ && mkdir /build/sub_scripts/
+COPY *.sh /build/
+COPY files/* /build/files/
+COPY sub_scripts/* /build/sub_scripts/ 
+

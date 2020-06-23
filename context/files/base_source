@@ -1,0 +1,5 @@
+#! /bin/bash
+# library pkg-config
+source files/base_info
+export PKG_CONFIG_SYSROOT_DIR=${MOUNTED_ROOT}
+export PKG_CONFIG_PATH=/usr/lib/${LIB_NAME}/pkgconfig

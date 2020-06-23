@@ -1,0 +1,7 @@
+OPENCV_SRC=opencv-3.4.10
+MOUNTED_ROOT=/mnt/target_os/sysroot/
+LIB_NAME=arm-linux-gnueabihf
+TARGET_ADDR=xilinx@192.168.2.99
+DIR_BUILD=/build/
+DIR_FILES=/build/files/
+DIR_SCRIPT=/build/sub_scripts/

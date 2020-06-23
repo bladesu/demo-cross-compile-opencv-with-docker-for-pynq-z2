@@ -1,0 +1,27 @@
+FROM ubuntu:18.04
+MAINTAINER Blade Su <bladesu0526@gmail.com>
+
+ENV DEBIAN_FRONTEND=noninteractive
+ENV USER root
+
+ARG tool_url=http://releases.linaro.org/components/toolchain/binaries/7.3-2018.05/arm-linux-gnueabihf/gcc-linaro-7.3.1-2018.05-x86_64_arm-linux-gnueabihf.tar.xz
+ARG tool_local=/opt/linaro/
+# necessary tool
+RUN apt-get update &&\
+    apt-get --quiet -y install \
+      git wget tar xz-utils && \
+    apt-get autoremove -y && \
+    apt-get clean && \
+    rm -rf /var/lib/apt/lists* /tmp/* /var/tmp/*
+
+RUN mkdir -p ${tool_local}
+RUN cd /opt/linaro/ && \ 
+    wget --quiet --output-document linaro-cross.tar.xz ${tool_url} && \
+    tar xf linaro-cross.tar.xz --strip-components=1 && \
+    rm linaro-cross.tar.xz
+ENV PATH ${tool_local}/bin:$PATH
+
+RUN mkdir /build
+VOLUME ["/build"]
+WORKDIR /build
+CMD ["/bin/bash"]
